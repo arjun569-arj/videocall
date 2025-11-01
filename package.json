@@ -1,0 +1,12 @@
+{
+  "name": "videocall",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install --prefix fronthend && npm install --prefix backend && npm run build --prefix fronthend",
+    "start": "npm run start --prefix backend"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
