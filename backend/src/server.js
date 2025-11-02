@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.get("/hello", (req, res) => {
-  return res.send("Hello World!");
+  return res.status(200).json({ message: "Hello World" });
 });
 
 app.listen(process.env.PORT, () =>
