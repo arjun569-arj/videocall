@@ -3,7 +3,7 @@ import path from "path";
 import dotenv from "dotenv";
 import { connectDB } from "./utils/connectDB.js";
 import { serve } from "inngest/express";
-import { inngest, functions } from "./lib/inngest.js";
+import { inngest, functions } from "./utils/inngest.js";
 import cors from "cors";
 
 dotenv.config(); // Load environment variables from .env file
