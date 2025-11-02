@@ -1,16 +1,18 @@
 import express from "express";
 import path from "path";
-import { env } from "./env.js";
+import dotenv from "dotenv";
+
+dotenv.config(); // Load environment variables from .env file
 
 const app = express();
 
 const __dirname = path.resolve();
 
-if (env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../fronthend/dist")));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
   app.get("/{*any}", (req, res) => {
-    res.sendFile(path.join(__dirname, "../fronthend", "dist", "index.html"));
+    res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
   });
 }
 
@@ -18,4 +20,6 @@ app.get("/hello", (req, res) => {
   return res.send("Hello World!");
 });
 
-app.listen(env.PORT);
+app.listen(process.env.PORT, () =>
+  console.log("Server is running on port:", process.env.PORT)
+);
