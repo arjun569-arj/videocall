@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 import dotenv from "dotenv";
+import { connectDB } from "./utils/connectDB.js";
 
 dotenv.config(); // Load environment variables from .env file
 
@@ -23,6 +24,7 @@ app.get("/hello", (req, res) => {
   return res.status(200).json({ message: "Hello World" });
 });
 
-app.listen(process.env.PORT, () =>
-  console.log("Server is running on port:", process.env.PORT)
-);
+app.listen(process.env.PORT, async () => {
+  await connectDB();
+  console.log("Server is running on port:", process.env.PORT);
+});
