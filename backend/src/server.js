@@ -14,6 +14,9 @@ if (process.env.NODE_ENV === "production") {
   app.get("/{*any}", (req, res) => {
     res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
   });
+  app.get("/hello", (req, res) => {
+    return res.status(200).json({ message: "Hello World" });
+  });
 }
 
 app.get("/hello", (req, res) => {
