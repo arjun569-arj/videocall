@@ -22,6 +22,9 @@ app.get("/health", (req, res) => {
   res.status(200).json({ msg: "api is up and running" });
 });
 
+import chatRoutes from "./routes/chatRoute.js";
+
+app.use("/api/chat/", chatRoutes);
 // make our app ready for deployment
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
